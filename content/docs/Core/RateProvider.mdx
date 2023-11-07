@@ -6,25 +6,23 @@ preview: rate-provider
 
 [Git Source](https://github.com/manifoldfinance/mevETH2/blob/25149b626aad16b7ef2da38d73bddd982040bc12/src/MevEthRateProvider.sol)
 
-
 Returns the value of mevETH in terms of ETH
 
-
 ## State Variables
-### mevETH
-The address of the mevETH contract
 
+### mevETH
+
+The address of the mevETH contract
 
 ```solidity
 IMevEth public immutable mevETH;
 ```
 
-
 ## Functions
+
 ### constructor
 
 Constructs the MevETHRateProvider contract, setting the mevETH address
-
 
 ```solidity
 constructor(IMevEth _mevETH);
@@ -34,14 +32,12 @@ constructor(IMevEth _mevETH);
 
 Returns the value of mevETH in terms of ETH
 
-
 ```solidity
 function getRate() external view override returns (uint256);
 ```
+
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`uint256`|the value of mevETH in terms of ETH|
-
-
+| Name     | Type      | Description                         |
+| -------- | --------- | ----------------------------------- |
+| `<none>` | `uint256` | the value of mevETH in terms of ETH |

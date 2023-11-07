@@ -1,13 +1,12 @@
 # MevEthErrors
+
 [Git Source](https://github.com/manifoldfinance/mevETH2/blob/25149b626aad16b7ef2da38d73bddd982040bc12/src/interfaces/Errors.sol)
 
-
-
-
 ## Errors
-### StakingPaused
-Errors
 
+### StakingPaused
+
+Errors
 
 ```solidity
 error StakingPaused();
@@ -180,4 +179,3 @@ error AlreadyDeposited();
 ```solidity
 error IncorrectWithdrawalCredentials();
 ```
-

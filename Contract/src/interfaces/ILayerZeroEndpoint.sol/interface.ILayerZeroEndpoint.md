@@ -1,25 +1,23 @@
 # ILayerZeroEndpoint
+
 [Git Source](https://github.com/manifoldfinance/mevETH2/blob/25149b626aad16b7ef2da38d73bddd982040bc12/src/interfaces/ILayerZeroEndpoint.sol)
 
-**Inherits:**
-[ILayerZeroUserApplicationConfig](/src/interfaces/ILayerZeroUserApplicationConfig.sol/interface.ILayerZeroUserApplicationConfig.md)
-
-
-
+**Inherits:** [ILayerZeroUserApplicationConfig](/src/interfaces/ILayerZeroUserApplicationConfig.sol/interface.ILayerZeroUserApplicationConfig.md)
 
 ## Functions
+
 ### send
 
 This function is used to send a payload to a destination on a different chain.
 
-*The function takes in the following parameters:
-- _dstChainId: The ID of the destination chain.
-- _destination: The address of the destination on the destination chain.
-- _payload: The payload to be sent.
-- _refundAddress: The address to which the funds should be refunded in case of failure.
-- _zroPaymentAddress: The address of the ZROPayment contract.
-- _adapterParams: The parameters to be passed to the adapter.*
+\*The function takes in the following parameters:
 
+-   \_dstChainId: The ID of the destination chain.
+-   \_destination: The address of the destination on the destination chain.
+-   \_payload: The payload to be sent.
+-   \_refundAddress: The address to which the funds should be refunded in case of failure.
+-   \_zroPaymentAddress: The address of the ZROPayment contract.
+-   \_adapterParams: The parameters to be passed to the adapter.\*
 
 ```solidity
 function send(
@@ -36,8 +34,7 @@ function send(
 
 ### receivePayload
 
-*receivePayload is used to receive payloads from other chains.*
-
+_receivePayload is used to receive payloads from other chains._
 
 ```solidity
 function receivePayload(
@@ -50,32 +47,29 @@ function receivePayload(
 )
     external;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_srcChainId`|`uint16`|The source chain ID.|
-|`_srcAddress`|`bytes`|The source address.|
-|`_dstAddress`|`address`|The destination address.|
-|`_nonce`|`uint64`|The nonce of the transaction.|
-|`_gasLimit`|`uint256`|The gas limit of the transaction.|
-|`_payload`|`bytes`|The payload of the transaction.|
-
+| Name          | Type      | Description                       |
+| ------------- | --------- | --------------------------------- |
+| `_srcChainId` | `uint16`  | The source chain ID.              |
+| `_srcAddress` | `bytes`   | The source address.               |
+| `_dstAddress` | `address` | The destination address.          |
+| `_nonce`      | `uint64`  | The nonce of the transaction.     |
+| `_gasLimit`   | `uint256` | The gas limit of the transaction. |
+| `_payload`    | `bytes`   | The payload of the transaction.   |
 
 ### getInboundNonce
 
 getInboundNonce() is a function that returns the inbound nonce of a given source chain and address.
 
-*getInboundNonce() takes two parameters: _srcChainId and _srcAddress. The _srcChainId is a uint16 representing the source chain ID and the
-_srcAddress is a bytes calldata representing the source address. The function returns a uint64 representing the inbound nonce.*
-
+_getInboundNonce() takes two parameters: \_srcChainId and \_srcAddress. The \_srcChainId is a uint16 representing the source chain ID and the \_srcAddress is a bytes calldata representing the source address. The function returns a uint64 representing the inbound nonce._
 
 ```solidity
 function getInboundNonce(uint16 _srcChainId, bytes calldata _srcAddress) external view returns (uint64);
 ```
 
 ### getOutboundNonce
-
 
 ```solidity
 function getOutboundNonce(uint16 _dstChainId, address _srcAddress) external view returns (uint64);
@@ -85,9 +79,7 @@ function getOutboundNonce(uint16 _dstChainId, address _srcAddress) external view
 
 This function estimates the fees for a cross-chain transaction.
 
-*The function takes in the destination chain ID, user application address, payload, boolean value for whether to pay in ZRO, and adapter parameter as
-input. It returns the native fee and ZRO fee as output.*
-
+_The function takes in the destination chain ID, user application address, payload, boolean value for whether to pay in ZRO, and adapter parameter as input. It returns the native fee and ZRO fee as output._
 
 ```solidity
 function estimateFees(
@@ -106,38 +98,35 @@ function estimateFees(
 
 getChainId()
 
-*Returns the chain ID of the current blockchain.*
-
+_Returns the chain ID of the current blockchain._
 
 ```solidity
 function getChainId() external view returns (uint16);
 ```
+
 **Returns**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`<none>`|`uint16`|uint16 - The chain ID of the current blockchain.|
-
+| Name     | Type     | Description                                      |
+| -------- | -------- | ------------------------------------------------ |
+| `<none>` | `uint16` | uint16 - The chain ID of the current blockchain. |
 
 ### retryPayload
 
-*retryPayload is used to retry a payload from a source chain to a destination chain.*
-
+_retryPayload is used to retry a payload from a source chain to a destination chain._
 
 ```solidity
 function retryPayload(uint16 _srcChainId, bytes calldata _srcAddress, bytes calldata _payload) external;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`_srcChainId`|`uint16`|The source chain ID.|
-|`_srcAddress`|`bytes`|The source address.|
-|`_payload`|`bytes`|The payload to be retried.|
-
+| Name          | Type     | Description                |
+| ------------- | -------- | -------------------------- |
+| `_srcChainId` | `uint16` | The source chain ID.       |
+| `_srcAddress` | `bytes`  | The source address.        |
+| `_payload`    | `bytes`  | The payload to be retried. |
 
 ### hasStoredPayload
-
 
 ```solidity
 function hasStoredPayload(uint16 _srcChainId, bytes calldata _srcAddress) external view returns (bool);
@@ -145,13 +134,11 @@ function hasStoredPayload(uint16 _srcChainId, bytes calldata _srcAddress) extern
 
 ### getSendLibraryAddress
 
-
 ```solidity
 function getSendLibraryAddress(address _userApplication) external view returns (address);
 ```
 
 ### getReceiveLibraryAddress
-
 
 ```solidity
 function getReceiveLibraryAddress(address _userApplication) external view returns (address);
@@ -161,15 +148,13 @@ function getReceiveLibraryAddress(address _userApplication) external view return
 
 This function checks if a payload is being sent.
 
-*This function is used to check if a payload is being sent. It returns a boolean value.*
-
+_This function is used to check if a payload is being sent. It returns a boolean value._
 
 ```solidity
 function isSendingPayload() external view returns (bool);
 ```
 
 ### isReceivingPayload
-
 
 ```solidity
 function isReceivingPayload() external view returns (bool);
@@ -179,8 +164,7 @@ function isReceivingPayload() external view returns (bool);
 
 getConfig() is a function that allows users to retrieve a configuration from the contract.
 
-*getConfig() takes four parameters: _version, _chainId, _userApplication, and _configType. It returns a bytes memory containing the configuration.*
-
+_getConfig() takes four parameters: \_version, \_chainId, \_userApplication, and \_configType. It returns a bytes memory containing the configuration._
 
 ```solidity
 function getConfig(uint16 _version, uint16 _chainId, address _userApplication, uint256 _configType) external view returns (bytes memory);
@@ -190,8 +174,7 @@ function getConfig(uint16 _version, uint16 _chainId, address _userApplication, u
 
 getSendVersion() is a function that returns the version of the user application.
 
-*getSendVersion() takes in an address of the user application and returns a uint16 value representing the version of the user application.*
-
+_getSendVersion() takes in an address of the user application and returns a uint16 value representing the version of the user application._
 
 ```solidity
 function getSendVersion(address _userApplication) external view returns (uint16);
@@ -201,11 +184,8 @@ function getSendVersion(address _userApplication) external view returns (uint16)
 
 This function returns the version of the user application.
 
-*This function is used to get the version of the user application. It takes in an address of the user application and returns a uint16 representing
-the version of the user application.*
-
+_This function is used to get the version of the user application. It takes in an address of the user application and returns a uint16 representing the version of the user application._
 
 ```solidity
 function getReceiveVersion(address _userApplication) external view returns (uint16);
 ```
-
