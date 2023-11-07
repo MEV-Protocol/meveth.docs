@@ -1,0 +1,42 @@
+---
+title: Testable
+description: Your first document
+---
+
+## Heading
+
+<Cards>
+  <Card title="Learn more about Next.js" href="https://nextjs.org/docs" />
+  <Card
+    title="Learn more about Next Docs"
+    href="https://next-docs-zeta.vercel.app"
+  />
+</Cards>
+
+### Heading
+
+```js
+console.log('Hello World')
+```
+
+#### Heading
+
+
+## Usage
+
+Set a root directory, along with a `slugs` function that generates slugs from
+the file info.
+
+The slugs function can read the `flattenedPath` property from file info, you may
+split it to generate slugs based on its file path.
+
+```ts
+const blog = fromMap(map, {
+  rootDir: 'mdx',
+  baseUrl: '/docs/mdx',
+  slugs,
+  validate: {
+    frontmatter: frontmatterSchema
+  }
+})
+```
