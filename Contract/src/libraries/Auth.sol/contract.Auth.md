@@ -1,16 +1,14 @@
 # Auth
+
 [Git Source](https://github.com/manifoldfinance/mevETH2/blob/25149b626aad16b7ef2da38d73bddd982040bc12/src/libraries/Auth.sol)
 
-
-
-
 ## State Variables
+
 ### adminsCounter
 
 ```solidity
 uint8 adminsCounter;
 ```
-
 
 ### operators
 
@@ -18,21 +16,19 @@ uint8 adminsCounter;
 mapping(address => bool) public operators;
 ```
 
-
 ### admins
 
 ```solidity
 mapping(address => bool) public admins;
 ```
 
-
 ## Functions
+
 ### constructor
 
 This constructor sets the initialAdmin address as an admin and operator.
 
-*The adminsCounter is incremented unchecked.*
-
+_The adminsCounter is incremented unchecked._
 
 ```solidity
 constructor(address initialAdmin);
@@ -40,13 +36,11 @@ constructor(address initialAdmin);
 
 ### onlyAdmin
 
-
 ```solidity
 modifier onlyAdmin();
 ```
 
 ### onlyOperator
-
 
 ```solidity
 modifier onlyOperator();
@@ -56,10 +50,7 @@ modifier onlyOperator();
 
 addAdmin() function allows an admin to add a new admin to the contract.
 
-*This function is only accessible to the existing admins and requires the address of the new admin.
-If the new admin is already set, the function will revert. Otherwise, the adminsCounter will be incremented and the new admin will be added to the admins
-mapping. An AdminAdded event will be emitted.*
-
+_This function is only accessible to the existing admins and requires the address of the new admin. If the new admin is already set, the function will revert. Otherwise, the adminsCounter will be incremented and the new admin will be added to the admins mapping. An AdminAdded event will be emitted._
 
 ```solidity
 function addAdmin(address newAdmin) external onlyAdmin;
@@ -69,8 +60,7 @@ function addAdmin(address newAdmin) external onlyAdmin;
 
 Deletes an admin from the list of admins.
 
-*Only admins can delete other admins. If the adminsCounter is 0, the transaction will revert.*
-
+_Only admins can delete other admins. If the adminsCounter is 0, the transaction will revert._
 
 ```solidity
 function deleteAdmin(address oldAdmin) external onlyAdmin;
@@ -80,27 +70,26 @@ function deleteAdmin(address oldAdmin) external onlyAdmin;
 
 Adds a new operator to the list of operators
 
-*Only the admin can add a new operator*
-
+_Only the admin can add a new operator_
 
 ```solidity
 function addOperator(address newOperator) external onlyAdmin;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`newOperator`|`address`|The address of the new operator|
-
+| Name          | Type      | Description                     |
+| ------------- | --------- | ------------------------------- |
+| `newOperator` | `address` | The address of the new operator |
 
 ### deleteOperator
-
 
 ```solidity
 function deleteOperator(address oldOperator) external onlyAdmin;
 ```
 
 ## Events
+
 ### AdminAdded
 
 ```solidity
@@ -126,6 +115,7 @@ event OperatorDeleted(address indexed oldOperator);
 ```
 
 ## Errors
+
 ### Unauthorized
 
 ```solidity
@@ -143,4 +133,3 @@ error AlreadySet();
 ```solidity
 error NoAdmin();
 ```
-

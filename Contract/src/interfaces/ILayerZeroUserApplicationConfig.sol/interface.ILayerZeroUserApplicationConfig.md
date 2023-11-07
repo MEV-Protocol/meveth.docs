@@ -1,27 +1,25 @@
 # ILayerZeroUserApplicationConfig
+
 [Git Source](https://github.com/manifoldfinance/mevETH2/blob/25149b626aad16b7ef2da38d73bddd982040bc12/src/interfaces/ILayerZeroUserApplicationConfig.sol)
 
-
-
-
 ## Functions
+
 ### setConfig
 
 This function sets the configuration of the contract.
 
-*This function sets the configuration of the contract. It takes in four parameters:
-- _version: The version of the configuration.
-- _chainId: The chain ID of the configuration.
-- _configType: The type of configuration.
-- _config: The configuration data.*
+\*This function sets the configuration of the contract. It takes in four parameters:
 
+-   \_version: The version of the configuration.
+-   \_chainId: The chain ID of the configuration.
+-   \_configType: The type of configuration.
+-   \_config: The configuration data.\*
 
 ```solidity
 function setConfig(uint16 _version, uint16 _chainId, uint256 _configType, bytes calldata _config) external;
 ```
 
 ### setSendVersion
-
 
 ```solidity
 function setSendVersion(uint16 _version) external;
@@ -31,8 +29,7 @@ function setSendVersion(uint16 _version) external;
 
 Sets the version of the receive protocol.
 
-*This function sets the version of the receive protocol. It is used to ensure that the protocol is up to date.*
-
+_This function sets the version of the receive protocol. It is used to ensure that the protocol is up to date._
 
 ```solidity
 function setReceiveVersion(uint16 _version) external;
@@ -42,12 +39,8 @@ function setReceiveVersion(uint16 _version) external;
 
 This function is used to force resume receive on a given source chain and address.
 
-*This function is used to force resume receive on a given source chain and address. It takes two parameters, _srcChainId and _srcAddress. _srcChainId
-is a uint16 representing the source chain ID and _srcAddress is a bytes calldata representing the source address. This function is only callable by the
-owner of the contract.*
-
+_This function is used to force resume receive on a given source chain and address. It takes two parameters, \_srcChainId and \_srcAddress. \_srcChainId is a uint16 representing the source chain ID and \_srcAddress is a bytes calldata representing the source address. This function is only callable by the owner of the contract._
 
 ```solidity
 function forceResumeReceive(uint16 _srcChainId, bytes calldata _srcAddress) external;
 ```
-

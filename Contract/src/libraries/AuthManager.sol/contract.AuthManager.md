@@ -1,22 +1,20 @@
 # AuthManager
+
 [Git Source](https://github.com/manifoldfinance/mevETH2/blob/25149b626aad16b7ef2da38d73bddd982040bc12/src/libraries/AuthManager.sol)
-
-
 
 Periphery contract to unify Auth updates across MevEth, MevEthShareVault and WagyuStaker
 
-*deployment address should be added as admin in initial setup*
+_deployment address should be added as admin in initial setup_
 
-*contract addresses are upgradeable. To upgrade auth a redeploy is necessary*
-
+_contract addresses are upgradeable. To upgrade auth a redeploy is necessary_
 
 ## State Variables
+
 ### auth
 
 ```solidity
 address public immutable auth;
 ```
-
 
 ### mevEth
 
@@ -24,13 +22,11 @@ address public immutable auth;
 address public mevEth;
 ```
 
-
 ### mevEthShareVault
 
 ```solidity
 address public mevEthShareVault;
 ```
-
 
 ### wagyuStaker
 
@@ -38,17 +34,15 @@ address public mevEthShareVault;
 address public wagyuStaker;
 ```
 
-
 ## Functions
-### constructor
 
+### constructor
 
 ```solidity
 constructor(address initialAdmin, address initialMevEth, address initialShareVault, address initialStaker);
 ```
 
 ### onlyAuth
-
 
 ```solidity
 modifier onlyAuth();
@@ -58,28 +52,25 @@ modifier onlyAuth();
 
 Updates the mevEth address
 
-*This function is only callable by the authorized address*
-
+_This function is only callable by the authorized address_
 
 ```solidity
 function updateMevEth(address newMevEth) external onlyAuth;
 ```
+
 **Parameters**
 
-|Name|Type|Description|
-|----|----|-----------|
-|`newMevEth`|`address`|The new mevEth address|
-
+| Name        | Type      | Description            |
+| ----------- | --------- | ---------------------- |
+| `newMevEth` | `address` | The new mevEth address |
 
 ### updateMevEthShareVault
-
 
 ```solidity
 function updateMevEthShareVault(address newMevEthShareVault) external onlyAuth;
 ```
 
 ### updateWagyuStaker
-
 
 ```solidity
 function updateWagyuStaker(address newWagyuStaker) external onlyAuth;
@@ -89,8 +80,7 @@ function updateWagyuStaker(address newWagyuStaker) external onlyAuth;
 
 Adds a new admin to the MevEth, WagyuStaker, and MevEthShareVault contracts.
 
-*If the MevEthShareVault is a multisig, the `MevEthShareVaultAuthUpdateMissed` event is emitted.*
-
+_If the MevEthShareVault is a multisig, the `MevEthShareVaultAuthUpdateMissed` event is emitted._
 
 ```solidity
 function addAdmin(address newAdmin) external onlyAuth;
@@ -98,13 +88,11 @@ function addAdmin(address newAdmin) external onlyAuth;
 
 ### deleteAdmin
 
-
 ```solidity
 function deleteAdmin(address oldAdmin) external onlyAuth;
 ```
 
 ### addOperator
-
 
 ```solidity
 function addOperator(address newOperator) external onlyAuth;
@@ -112,23 +100,24 @@ function addOperator(address newOperator) external onlyAuth;
 
 ### deleteOperator
 
-
 ```solidity
 function deleteOperator(address oldOperator) external onlyAuth;
 ```
 
 ## Events
+
 ### MevEthShareVaultAuthUpdateMissed
+
 emitted when MevEthShareVault is a multisig to log missed auth updates
 
-*missed updates will need to be manually added when upgrading from a multisig*
-
+_missed updates will need to be manually added when upgrading from a multisig_
 
 ```solidity
 event MevEthShareVaultAuthUpdateMissed(address changeAddress, Operation operation);
 ```
 
 ## Errors
+
 ### Unauthorized
 
 ```solidity
@@ -136,6 +125,7 @@ error Unauthorized();
 ```
 
 ## Enums
+
 ### Operation
 
 ```solidity
@@ -146,4 +136,3 @@ enum Operation {
     DELETEOPERATOR
 }
 ```
-

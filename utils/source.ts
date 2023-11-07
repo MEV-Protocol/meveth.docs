@@ -1,22 +1,22 @@
-import { writeFileSync } from 'fs'
-import path from 'path'
-import { map } from '@/_map'
-import { defaultValidators, fromMap, type Utils } from 'next-docs-mdx/map'
-import type { FileInfo } from 'next-docs-mdx/types'
-import type { StructuredData } from 'next-docs-zeta/mdx-plugins'
-import { PHASE_PRODUCTION_BUILD } from 'next/constants'
-import { z } from 'zod'
+import { writeFileSync } from 'fs';
+import path from 'path';
+import { map } from '@/_map';
+import { defaultValidators, fromMap, type Utils } from 'next-docs-mdx/map';
+import type { FileInfo } from 'next-docs-mdx/types';
+import type { StructuredData } from 'next-docs-zeta/mdx-plugins';
+import { PHASE_PRODUCTION_BUILD } from 'next/constants';
+import { z } from 'zod';
 
 const frontmatterSchema = defaultValidators.frontmatter.extend({
   preview: z.string().optional(),
-  index: z.boolean().default(false)
-})
+  index: z.boolean().default(false),
+});
 
 const slugs = (file: FileInfo) =>
   file.flattenedPath
     .split('/')
-    .filter(p => !['index', ''].includes(p))
-    .slice(1)
+    .filter((p) => !['index', ''].includes(p))
+    .slice(1);
 
 export const tabs: Record<string, Utils> = {
   ui: fromMap(map, {
@@ -24,29 +24,29 @@ export const tabs: Record<string, Utils> = {
     baseUrl: '/docs/ui',
     slugs,
     validate: {
-      frontmatter: frontmatterSchema
-    }
+      frontmatter: frontmatterSchema,
+    },
   }),
   headless: fromMap(map, {
     rootDir: 'headless',
     baseUrl: '/docs/headless',
     slugs,
     validate: {
-      frontmatter: frontmatterSchema
-    }
+      frontmatter: frontmatterSchema,
+    },
   }),
   mdx: fromMap(map, {
     rootDir: 'mdx',
     baseUrl: '/docs/mdx',
     slugs,
     validate: {
-      frontmatter: frontmatterSchema
-    }
-  })
-}
+      frontmatter: frontmatterSchema,
+    },
+  }),
+};
 
 export function getUtils(mode: 'ui' | 'headless' | 'mdx' | string): Utils {
-  return tabs[mode] ?? tabs['headless']
+  return tabs[mode] ?? tabs['headless'];
 }
 
 declare module 'next-docs-mdx/types' {
@@ -57,35 +57,32 @@ declare module 'next-docs-mdx/types' {
 // So that we can update search indexes after the build
 declare global {
   // eslint-disable-next-line no-var
-  var __NEXT_DOCS_INDEX_UPDATED: boolean
+  var __NEXT_DOCS_INDEX_UPDATED: boolean;
 }
 
-global.__NEXT_DOCS_INDEX_UPDATED = false
+global.__NEXT_DOCS_INDEX_UPDATED = false;
 
 export type Index = {
-  id: string
-  title: string
-  description?: string
-  url: string
-  structuredData: StructuredData
-}
+  id: string;
+  title: string;
+  description?: string;
+  url: string;
+  structuredData: StructuredData;
+};
 
-if (
-  process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD &&
-  !global.__NEXT_DOCS_INDEX_UPDATED
-) {
-  const mapPath = path.resolve('./.next/_map_indexes.json')
-  const indexes: Index[] = Object.values(tabs).flatMap(tab => {
-    return tab.pages.map(page => ({
+if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD && !global.__NEXT_DOCS_INDEX_UPDATED) {
+  const mapPath = path.resolve('./.next/_map_indexes.json');
+  const indexes: Index[] = Object.values(tabs).flatMap((tab) => {
+    return tab.pages.map((page) => ({
       id: page.file.id,
       title: page.matter.title,
       description: page.matter.description,
       url: tab.getPageUrl(page.slugs, page.file.locale),
-      structuredData: page.data.structuredData
-    }))
-  })
+      structuredData: page.data.structuredData,
+    }));
+  });
 
-  writeFileSync(mapPath, JSON.stringify(indexes))
+  writeFileSync(mapPath, JSON.stringify(indexes));
 
-  global.__NEXT_DOCS_INDEX_UPDATED = true
+  global.__NEXT_DOCS_INDEX_UPDATED = true;
 }

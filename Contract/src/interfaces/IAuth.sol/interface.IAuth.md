@@ -1,16 +1,14 @@
 # IAuth
+
 [Git Source](https://github.com/manifoldfinance/mevETH2/blob/25149b626aad16b7ef2da38d73bddd982040bc12/src/interfaces/IAuth.sol)
 
-
-
-
 ## Functions
+
 ### addAdmin
 
 Adds an admin to the contract.
 
-*Only existing admins can add new admins.*
-
+_Only existing admins can add new admins._
 
 ```solidity
 function addAdmin(address newAdmin) external;
@@ -20,8 +18,7 @@ function addAdmin(address newAdmin) external;
 
 This function adds a new operator to the contract.
 
-*This function adds a new operator to the contract. It is only callable by the contract owner. The new operator must be a valid Ethereum address.*
-
+_This function adds a new operator to the contract. It is only callable by the contract owner. The new operator must be a valid Ethereum address._
 
 ```solidity
 function addOperator(address newOperator) external;
@@ -31,8 +28,7 @@ function addOperator(address newOperator) external;
 
 This function is used to check if an address is an admin.
 
-*This function is used to check if an address is an admin. It takes an address as an argument and returns a boolean value.*
-
+_This function is used to check if an address is an admin. It takes an address as an argument and returns a boolean value._
 
 ```solidity
 function admins(address) external view returns (bool);
@@ -42,8 +38,7 @@ function admins(address) external view returns (bool);
 
 This function is used to delete an admin from the list of admins.
 
-*This function requires the address of the admin to be deleted. It will delete the admin from the list of admins.*
-
+_This function requires the address of the admin to be deleted. It will delete the admin from the list of admins._
 
 ```solidity
 function deleteAdmin(address oldAdmin) external;
@@ -53,9 +48,7 @@ function deleteAdmin(address oldAdmin) external;
 
 This function is used to delete an operator from the contract.
 
-*This function is called by the owner of the contract to delete an operator from the contract. The address of the operator to be deleted is passed as
-an argument.*
-
+_This function is called by the owner of the contract to delete an operator from the contract. The address of the operator to be deleted is passed as an argument._
 
 ```solidity
 function deleteOperator(address oldOperator) external;
@@ -65,14 +58,14 @@ function deleteOperator(address oldOperator) external;
 
 This function checks if the given address is an operator.
 
-*This function is used to check if the given address is an operator. It returns a boolean value indicating whether the address is an operator or not.*
-
+_This function is used to check if the given address is an operator. It returns a boolean value indicating whether the address is an operator or not._
 
 ```solidity
 function operators(address) external view returns (bool);
 ```
 
 ## Events
+
 ### AdminAdded
 
 ```solidity
@@ -96,4 +89,3 @@ event OperatorAdded(address indexed newOperator);
 ```solidity
 event OperatorDeleted(address indexed oldOperator);
 ```
-
