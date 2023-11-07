@@ -1,10 +1,16 @@
+// @ts-check
+/**
+ * @type {import('next').NextConfig}
+ */
+
 import createNextDocsMDX from 'next-docs-mdx/config'
 
 const withFumaMDX = createNextDocsMDX()
 
-/** @type {import('next').NextConfig} */
+
 const config = {
-  reactStrictMode: true
+  reactStrictMode: true,
+  poweredByHeader: false,
 }
 
 export default withFumaMDX(config)

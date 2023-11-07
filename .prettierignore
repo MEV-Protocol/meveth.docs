@@ -1,0 +1,15 @@
+# -*- mode: gitignore; -*-
+pnpm-lock.yaml
+.next/
+*.json
+/out
+cache/
+*.html
+*.css
+*.svg
+*.xml
+*.scss
+*.min.js
+.cache/
+build/
+dist/
