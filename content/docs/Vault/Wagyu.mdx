@@ -69,7 +69,9 @@ Construction sets authority, MevEth, and deposit contract addresses
 constructor(address _authority, address _depositContract, address _mevEth) Auth(_authority);
 ```
 
-**Parameters** |Name|Type|Description| |----|----|-----------| |`_authority`|`address`|The address of the controlling admin authority| |`_depositContract`|`address`|The address of the beacon deposit contract| |`_mevEth`|`address`|The address of the mevETH contract|
+| Name         | Type      | Description                                    |
+| ------------ | --------- | ---------------------------------------------- | --- | ------------------ | --------- | ------------------------------------------ | --- | --------- | --------- | ---------------------------------- |
+| `_authority` | `address` | The address of the controlling admin authority |     | `_depositContract` | `address` | The address of the beacon deposit contract |     | `_mevEth` | `address` | The address of the mevETH contract |
 
 ### deposit
 
@@ -87,7 +89,9 @@ Function to pay rewards to the MevEth contract _Only callable by an operator_
 function payRewards(uint256 rewards) external onlyOperator;
 ```
 
-**Parameters** |Name|Type|Description| |----|----|-----------| |`rewards`|`uint256`|rewards to pay to the MevEth contract|
+| Name      | Type      | Description                           |
+| --------- | --------- | ------------------------------------- |
+| `rewards` | `uint256` | rewards to pay to the MevEth contract |
 
 ### registerExit
 
@@ -127,7 +131,9 @@ Batch register Validators for migration _only Admin_
 function batchMigrate(IStakingModule.ValidatorData[] calldata batchData) external onlyAdmin;
 ```
 
-**Parameters** |Name|Type|Description| |----|----|-----------| |`batchData`|`IStakingModule.ValidatorData[]`|list of each validators' data struct|
+| Name        | Type                             | Description                          |
+| ----------- | -------------------------------- | ------------------------------------ |
+| `batchData` | `IStakingModule.ValidatorData[]` | list of each validators' data struct |
 
 ### receive
 
