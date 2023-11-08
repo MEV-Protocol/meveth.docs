@@ -76,8 +76,8 @@ function maxDeposit(address reciever) external view returns (uint256 maxAssets);
 
 **Parameters**
 
-| Name       | Type      | Description                                                                     |
-| ---------- | --------- | ------------------------------------------------------------------------------- |
+| Name | Type | Description |
+| --- | --- | --- |
 | `reciever` | `address` | The address in question of who would be depositing, doesn't matter in this case |
 
 **Returns**
@@ -131,8 +131,8 @@ function maxMint(address reciever) external view returns (uint256 maxShares);
 
 **Parameters**
 
-| Name       | Type      | Description                                                                  |
-| ---------- | --------- | ---------------------------------------------------------------------------- |
+| Name | Type | Description |
+| --- | --- | --- |
 | `reciever` | `address` | The address in question of who would be minting, doesn't matter in this case |
 
 **Returns**
@@ -155,8 +155,8 @@ function previewMint(uint256 shares) external view returns (uint256 assets);
 
 **Returns**
 
-| Name     | Type      | Description                                                                |
-| -------- | --------- | -------------------------------------------------------------------------- |
+| Name | Type | Description |
+| --- | --- | --- |
 | `assets` | `uint256` | The amount of assets that would be required, _under ideal conditions_ only |
 
 ### mint
@@ -266,8 +266,8 @@ function previewRedeem(uint256 shares) external view returns (uint256 assets);
 
 **Returns**
 
-| Name     | Type      | Description                                                                 |
-| -------- | --------- | --------------------------------------------------------------------------- |
+| Name | Type | Description |
+| --- | --- | --- |
 | `assets` | `uint256` | The amount of assets that would be withdrawn, _under ideal conditions_ only |
 
 ### redeem
