@@ -18,10 +18,10 @@ export default function HomePage() {
           marginBottom: '1rem',
         }}
       >
-        Hello World
+        mevETH Protocol Documentation
       </h1>
       <p>
-        You can open{' '}
+        Explore protocol {' '}
         <Link
           href="/docs"
           style={{
@@ -31,7 +31,6 @@ export default function HomePage() {
         >
           /docs
         </Link>{' '}
-        and see the documentation.
       </p>
     </main>
   );
