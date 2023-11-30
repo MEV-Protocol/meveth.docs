@@ -21,7 +21,7 @@ export default function HomePage() {
         mevETH Protocol Documentation
       </h1>
       <p>
-        Explore protocol {' '}
+        Explore protocol{' '}
         <Link
           href="/docs"
           style={{
